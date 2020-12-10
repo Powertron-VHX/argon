@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon -r dotenv/config argon.js dotenv_config_path=./.env/dev/.env --node-env=development",
     "build": "node -r dotenv/config argon.js dotenv_config_path=./.env/prod/.env --node-env=production",
-    "lint": "eslint --ignore-path .gitignore ."
+    "lint": "eslint --ignore-path .gitignore . --fix"
   },
   "keywords": [
     "api",
@@ -18,15 +18,17 @@
   "author": "Théau NICOLAS",
   "license": "ISC",
   "dependencies": {
+    "babel-register": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
-    "connect": "^3.7.0",
     "cors": "^2.8.5",
+    "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",

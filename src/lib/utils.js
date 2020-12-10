@@ -12,7 +12,6 @@ exports.isErr = (err) => (err instanceof Error);
 /** Return good format of response */
 exports.checkAndChange = (obj) => {
   if (this.isErr(obj)) {
-    return JSON.stringify(this.error(obj.message));
-  }
-  return JSON.stringify(this.success(obj));
+    return (this.error(obj.message));
+  } return (this.success(obj));
 };

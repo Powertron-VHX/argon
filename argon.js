@@ -1,5 +1,5 @@
-const connect = require('connect');
-const http = require('http');
+require('babel-register');
+const express = require('express');
 const compression = require('compression');
 const bodyParser = require('body-parser');
 const morgan = require('morgan')('dev');
@@ -7,24 +7,23 @@ const cors = require('cors');
 const { authenticate } = require('./src/lib/authControl');
 const { checkAndChange } = require('./src/lib/utils');
 
-const app = connect();
+const tests = require('./src/routes/test');
+
+const app = express();
 
 app.use(compression());
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(morgan);
 
-app.use('/rest', (req, res, next) => {
-  if (authenticate(req.body.password)) next();
-  else res.end(checkAndChange(new Error('Authentication failed')));
+app.use('/', (req, res, next) => {
+  if (authenticate(req.body.password) === true) next();
+  else res.json(checkAndChange(new Error('Authentication failed')));
 });
 
-app.use((req, res) => {
-  res.end('Hello from Connect!\n');
-});
+app.use('/', tests);
 
-http.createServer(app).listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Argon mode : ${process.env.ENV}`);
   console.log(`Started on  ${process.env.HOST}:${process.env.PORT}`);
 });
