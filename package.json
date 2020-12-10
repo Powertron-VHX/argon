@@ -1,0 +1,27 @@
+{
+  "name": "argon",
+  "version": "1.0.0",
+  "description": "Argon is an REST API base project. You can focus on routes whithout thinking of structure",
+  "main": "argon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r dotenv/config argon.js dotenv_config_path=./.env/dev/.env --node-env=development",
+    "build": "node -r dotenv/config argon.js dotenv_config_path=./.env/prod/.env --node-env=production",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "base",
+    "framework"
+  ],
+  "author": "Théau NICOLAS",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
