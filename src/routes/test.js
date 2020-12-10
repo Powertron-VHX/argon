@@ -1,6 +1,6 @@
 const express = require('express');
 const { checkAndChange } = require('../lib/utils');
-const Tests = require('../classes/test-class')();
+const Tests = require('../classes/structure/test-class')();
 
 const app = express.Router();
 

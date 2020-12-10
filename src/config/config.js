@@ -1,3 +1,9 @@
 module.exports = {
-  secret: 'supersecret',
+  admin : {
+    mail : {
+      address : "your.address@mail.com",
+      smtp : "",
+      host : ""
+    }
+  }
 };

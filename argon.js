@@ -7,8 +7,6 @@ const cors = require('cors');
 const { authenticate } = require('./src/lib/authControl');
 const { checkAndChange } = require('./src/lib/utils');
 
-const tests = require('./src/routes/test');
-
 const app = express();
 
 app.use(compression());
@@ -21,7 +19,10 @@ app.use('/', (req, res, next) => {
   else res.json(checkAndChange(new Error('Authentication failed')));
 });
 
-app.use('/', tests);
+if(process.env.ENV === 'development') {
+  const tests = require('./src/routes/test');
+  app.use('/tests/', tests);
+}
 
 app.listen(process.env.PORT, () => {
   console.log(`Argon mode : ${process.env.ENV}`);
